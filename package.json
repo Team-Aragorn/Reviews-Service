@@ -1,0 +1,19 @@
+{
+  "name": "review_service",
+  "version": "1.0.0",
+  "description": "Servie for the reviews module of BetterGameStart project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Aragorn/review_service.git"
+  },
+  "author": "Adam Tiller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Aragorn/review_service/issues"
+  },
+  "homepage": "https://github.com/Team-Aragorn/review_service#readme"
+}
