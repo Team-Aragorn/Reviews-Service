@@ -69,6 +69,7 @@ db.once('open', () => {
         review.save()
           .then(() => {
             if (i === num && j === numOfReviews - 1) {
+              console.log('Seeded!');
               db.close();
             }
           })
@@ -91,11 +92,9 @@ db.once('open', () => {
           }
           console.log('Collection "reviews" dropped!');
           seed(Review, 100);
-          console.log('Seeded!');
         });
       } else {
         seed(Review, 100);
-        console.log('Seeded!');
       }
     });
 });
