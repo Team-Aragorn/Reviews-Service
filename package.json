@@ -23,6 +23,8 @@
     "@babel/runtime": "^7.9.6",
     "babel-preset-react": "^6.24.1",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mongoose": "^5.9.11",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
