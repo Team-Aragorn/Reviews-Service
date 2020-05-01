@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const seed = require('./seeder.js');
 
 mongoose.connect('mongodb://localhost/reviews', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -35,16 +34,6 @@ db.once('open', () => {
   });
 
   const Review = mongoose.model('Review', reviewSchema);
-
-  // UNCOMMENT BELOW TO DROP COLLECTION AND RESEED DATA
-  //
-  // mongoose.connection.db.dropCollection('reviews', (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //     return;
-  //   }
-  //   seed.seed(Review, 100);
-  // });
 });
 
 module.exports.db = db;
