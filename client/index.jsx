@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReviewList from './components/ReviewList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class App extends React.Component {
       currentGame: 0,
       reviews: [{
         gameId: 0,
-        date: Date.now,
+        date: Date.now(),
         overall: 1,
         title: '',
         review: '',
@@ -34,13 +35,13 @@ class App extends React.Component {
       }],
     };
 
-    this.REVIEWSBASE = 'http://localhost:3002/games/';
+    this.REVIEWSBASE = 'http://localhost:3002/reviews/';
   }
 
   componentDidMount() {
-    const urlParams = new URLSearchParams(window.location.search);
+    const gameId = window.location.pathname.match(/\/games\/(\d+)\//);
     this.setState({
-      currentGame: urlParams.get('gameId'),
+      currentGame: gameId[1],
     }, () => {
       this.fetchReviews();
     });
@@ -61,7 +62,7 @@ class App extends React.Component {
 
   render() {
     const { currentGame } = this.state;
-    const { title } = this.state.reviews[0];
+    const { reviews } = this.state;
 
     return (
       <div>
@@ -70,7 +71,7 @@ class App extends React.Component {
         <br />
         Now viewing the data for game {currentGame}
         <br />
-        The title of the first review for this game is: {title}
+        <ReviewList reviews={reviews} />
       </div>
     );
   }
