@@ -4,10 +4,10 @@
   "description": "Servie for the reviews module of BetterGameStart project.",
   "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-start": "nodemon server/index.js --ignore 'client/' --ignore 'public/'",
     "build": "webpack --config webpack.config.js",
-    "seed": "node server/db/seeder.js"
+    "dev-start": "nodemon server/index.js --ignore 'client/' --ignore 'public/'",
+    "seed": "node server/db/seeder.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "@babel/polyfill": "^7.8.7",
     "@babel/runtime": "^7.9.6",
     "babel-preset-react": "^6.24.1",
+    "core-js": "^3.6.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "lodash": "^4.17.15",
@@ -38,8 +39,11 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "babel-jest": "^25.5.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -47,7 +51,17 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "jest": "^25.5.3",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "nodemon": "^2.0.3",
+    "react-test-renderer": "^16.13.1",
     "webpack": "^4.43.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
+    "testEnvironment": "enzyme"
   }
 }
