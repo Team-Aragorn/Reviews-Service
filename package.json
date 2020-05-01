@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.config.js",
     "dev-start": "nodemon server/index.js --ignore 'client/' --ignore 'public/'",
     "seed": "node server/db/seeder.js",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
