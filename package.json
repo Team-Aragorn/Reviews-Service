@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev-start": "nodemon server/index.js --ignore 'client/' --ignore 'public/'",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "seed": "node server/db/seeder.js"
   },
   "repository": {
     "type": "git",

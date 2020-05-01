@@ -35,6 +35,7 @@ const Review = mongoose.model('Review', reviewSchema);
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connection to database successful!');
+
 });
 
 module.exports.Review = Review;
