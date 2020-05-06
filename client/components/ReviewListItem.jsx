@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Header from './Header.jsx';
+import Header from './Header';
 
 const Container = styled.div`
 display: grid;

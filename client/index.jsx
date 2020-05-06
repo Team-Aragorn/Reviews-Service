@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReviewList from './components/ReviewList.jsx';
+import ReviewList from './components/ReviewList';
+
 
 class App extends React.Component {
   constructor(props) {

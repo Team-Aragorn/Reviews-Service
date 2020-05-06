@@ -1,11 +1,14 @@
 import React from 'react';
-import ReviewListItem from './ReviewListItem.jsx';
+import ReviewListItem from './ReviewListItem';
+
 
 const ReviewList = (props) => {
+  const { reviews } = props;
+
   return (
-    <div>
-      {props.reviews.map((review) => <ReviewListItem review={review} />)}
-    </div>
+    <>
+      {reviews.map((review) => <ReviewListItem review={review} />)}
+    </>
   );
 };
 

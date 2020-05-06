@@ -49,7 +49,10 @@ const Header = ({ className, review }) => {
       <Stars>☆☆☆☆☆</Stars>
       <Signature>
         <Nickname>{review.nickname}</Nickname>
-        <Date> · <ReactTimeAgo date={review.date}/></Date>
+        <Date>
+          {' · '}
+          <ReactTimeAgo date={review.date} />
+        </Date>
       </Signature>
       <Title>{review.title}</Title>
     </Container>
