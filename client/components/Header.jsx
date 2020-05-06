@@ -51,7 +51,7 @@ const Header = ({ className, review }) => {
         <Nickname>{review.nickname}</Nickname>
         <Date>
           {' · '}
-          <ReactTimeAgo date={review.date} />
+          <ReactTimeAgo date={new window.Date(review.date)} />
         </Date>
       </Signature>
       <Title>{review.title}</Title>

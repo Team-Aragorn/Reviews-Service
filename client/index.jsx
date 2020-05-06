@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReviewList from './components/ReviewList';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +10,7 @@ class App extends React.Component {
       currentGame: 0,
       reviews: [{
         gameId: 0,
-        date: Date.now(),
+        date: new Date(),
         overall: 1,
         title: '',
         review: '',

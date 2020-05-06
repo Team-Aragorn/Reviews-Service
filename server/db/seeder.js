@@ -43,6 +43,7 @@ db.once('open', () => {
       for (let j = 0; j < numOfReviews; j += 1) {
         const review = new Schema({
           gameId: i,
+          date: faker.date.recent(90),
           overall: Math.ceil(Math.random() * 5),
           title: faker.fake('{{company.catchPhraseAdjective}} {{commerce.productAdjective}} {{company.bsNoun}}'),
           review: faker.lorem.paragraph(),
