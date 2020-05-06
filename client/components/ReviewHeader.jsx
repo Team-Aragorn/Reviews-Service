@@ -44,7 +44,7 @@ const Title = styled.h3`
   text-transform: capitalize;
 `;
 
-const Header = ({ className, review }) => (
+const ReviewHeader = ({ className, review }) => (
   <Container className={className}>
     <Stars>☆☆☆☆☆</Stars>
     <Signature>
@@ -58,14 +58,14 @@ const Header = ({ className, review }) => (
   </Container>
 );
 
-const StyledHeader = styled(Header)`
+const StyledReviewHeader = styled(ReviewHeader)`
 grid-area: header;
 background: #fdcdac;
 `;
 
-export default StyledHeader;
+export default StyledReviewHeader;
 
-Header.propTypes = {
+ReviewHeader.propTypes = {
   className: PropTypes.string.isRequired,
   review: PropTypes.shape({
     _id: PropTypes.string,

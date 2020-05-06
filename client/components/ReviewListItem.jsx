@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Header from './Header';
+import ReviewHeader from './ReviewHeader';
+import ReviewText from './ReviewText';
 
 const Container = styled.div`
 display: grid;
@@ -24,13 +25,6 @@ background: #b3e2cd;
 const Badge = styled.div`
 grid-area: badge;
 background: #cbd5e8;
-`;
-
-const Review = styled.div`
-grid-area: review;
-background: #f4cae4;
-line-height: 24px;
-font-size: 16px;
 `;
 
 const Owned = styled.div`
@@ -60,9 +54,9 @@ const ReviewListItem = (props) => {
   return (
     <Container>
       <Avatar />
-      <Header review={review} />
+      <ReviewHeader review={review} />
       <Badge />
-      <Review>{review.review}</Review>
+      <ReviewText review={review} />
       <Owned />
       <Recommend />
       <Ratings />
