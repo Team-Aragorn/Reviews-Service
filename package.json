@@ -33,9 +33,9 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
+    "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
-    "@babel/polyfill": "^7.8.7",
     "@babel/runtime": "^7.9.6",
     "@shelf/jest-mongodb": "^1.1.5",
     "babel-jest": "^25.5.1",
@@ -54,6 +54,7 @@
     "jest": "^25.5.3",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
+    "jest-styled-components": "^7.0.2",
     "nodemon": "^2.0.3",
     "react-test-renderer": "^16.13.1",
     "webpack": "^4.43.0"
