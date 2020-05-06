@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTimeAgo from 'react-time-ago';
 import TimeAgo from 'javascript-time-ago';
@@ -43,21 +44,19 @@ const Title = styled.h3`
   text-transform: capitalize;
 `;
 
-const Header = ({ className, review }) => {
-  return (
-    <Container className={className}>
-      <Stars>☆☆☆☆☆</Stars>
-      <Signature>
-        <Nickname>{review.nickname}</Nickname>
-        <Date>
-          {' · '}
-          <ReactTimeAgo date={new window.Date(review.date)} />
-        </Date>
-      </Signature>
-      <Title>{review.title}</Title>
-    </Container>
-  );
-};
+const Header = ({ className, review }) => (
+  <Container className={className}>
+    <Stars>☆☆☆☆☆</Stars>
+    <Signature>
+      <Nickname>{review.nickname}</Nickname>
+      <Date>
+        {' · '}
+        <ReactTimeAgo date={new window.Date(review.date)} />
+      </Date>
+    </Signature>
+    <Title>{review.title}</Title>
+  </Container>
+);
 
 const StyledHeader = styled(Header)`
 grid-area: header;
@@ -65,3 +64,33 @@ background: #fdcdac;
 `;
 
 export default StyledHeader;
+
+Header.propTypes = {
+  className: PropTypes.string.isRequired,
+  review: PropTypes.shape({
+    _id: PropTypes.string,
+    gameId: PropTypes.number,
+    date: PropTypes.string,
+    overall: PropTypes.number,
+    title: PropTypes.string,
+    review: PropTypes.string,
+    recommend: PropTypes.bool,
+    nickname: PropTypes.string,
+    location: PropTypes.string,
+    email: PropTypes.string,
+    buyForSelf: PropTypes.bool,
+    ageBracket: PropTypes.number,
+    gender: PropTypes.number,
+    graphics: PropTypes.number,
+    gameplay: PropTypes.number,
+    appeal: PropTypes.number,
+    ownershipBracket: PropTypes.number,
+    purchaseOnline: PropTypes.bool,
+    readReviews: PropTypes.bool,
+    recommendBGS: PropTypes.number,
+    meta: PropTypes.shape({
+      helpful: PropTypes.number,
+      unhelpful: PropTypes.number,
+    }),
+  }).isRequired,
+};

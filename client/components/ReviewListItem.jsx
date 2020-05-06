@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Header from './Header';
@@ -71,3 +72,32 @@ const ReviewListItem = (props) => {
 };
 
 export default ReviewListItem;
+
+ReviewListItem.propTypes = {
+  review: PropTypes.shape({
+    _id: PropTypes.string,
+    gameId: PropTypes.number,
+    date: PropTypes.string,
+    overall: PropTypes.number,
+    title: PropTypes.string,
+    review: PropTypes.string,
+    recommend: PropTypes.bool,
+    nickname: PropTypes.string,
+    location: PropTypes.string,
+    email: PropTypes.string,
+    buyForSelf: PropTypes.bool,
+    ageBracket: PropTypes.number,
+    gender: PropTypes.number,
+    graphics: PropTypes.number,
+    gameplay: PropTypes.number,
+    appeal: PropTypes.number,
+    ownershipBracket: PropTypes.number,
+    purchaseOnline: PropTypes.bool,
+    readReviews: PropTypes.bool,
+    recommendBGS: PropTypes.number,
+    meta: PropTypes.shape({
+      helpful: PropTypes.number,
+      unhelpful: PropTypes.number,
+    }),
+  }).isRequired,
+};
