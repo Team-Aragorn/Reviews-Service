@@ -1,11 +1,12 @@
 import React from 'react';
-import _ from 'lodash';
 import styled from 'styled-components';
+
+import Header from './Header.jsx';
 
 const Container = styled.div`
 display: grid;
 grid-template-columns: 60px 7fr 3fr;
-grid-template-rows: 60px 60px 60px 60px 60px;
+grid-template-rows: auto auto 30px 30px 30px;
 grid-template-areas:
 "avatar header    badge"
 "   .   review    ratings"
@@ -19,11 +20,6 @@ grid-area: avatar;
 background: #b3e2cd;
 `;
 
-const Header = styled.div`
-grid-area: header;
-background: #fdcdac;
-`;
-
 const Badge = styled.div`
 grid-area: badge;
 background: #cbd5e8;
@@ -32,6 +28,8 @@ background: #cbd5e8;
 const Review = styled.div`
 grid-area: review;
 background: #f4cae4;
+line-height: 24px;
+font-size: 16px;
 `;
 
 const Owned = styled.div`
@@ -61,7 +59,7 @@ const ReviewListItem = (props) => {
   return (
     <Container>
       <Avatar />
-      <Header />
+      <Header review={review} />
       <Badge />
       <Review>{review.review}</Review>
       <Owned />
