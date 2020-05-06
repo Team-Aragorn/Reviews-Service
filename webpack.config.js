@@ -9,7 +9,9 @@ module.exports = {
   output: {
     filename: 'app.js',
     path: DIST_DIR,
+    sourceMapFilename: 'app.js.map',
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -22,5 +24,6 @@ module.exports = {
       },
     ],
   },
+  resolve: { extensions: ['.js', '.jsx'] },
   watch: true,
 };

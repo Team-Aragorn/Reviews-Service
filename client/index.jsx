@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReviewList from './components/ReviewList.jsx';
+import styled from 'styled-components';
+
+import ReviewList from './components/ReviewList';
+
+const SectionHeading = styled.h1`
+  font-size: 34px;
+  font-family: sans-serif;
+  line-height: 35px;
+  text-transform: uppercase;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -9,8 +18,9 @@ class App extends React.Component {
     this.state = {
       currentGame: 0,
       reviews: [{
+        _id: '0',
         gameId: 0,
-        date: Date.now(),
+        date: `${new Date()}`,
         overall: 1,
         title: '',
         review: '',
@@ -61,18 +71,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { currentGame } = this.state;
     const { reviews } = this.state;
 
     return (
-      <div>
-        <h4>React is online!</h4>
-        And Webpack is watching!
-        <br />
-        Now viewing the data for game {currentGame}
-        <br />
+      <>
+        <SectionHeading>reviews</SectionHeading>
         <ReviewList reviews={reviews} />
-      </div>
+      </>
     );
   }
 }
