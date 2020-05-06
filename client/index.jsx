@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
+
 import ReviewList from './components/ReviewList';
+
+const SectionHeading = styled.h1`
+  font-size: 34px;
+  font-family: sans-serif;
+  line-height: 35px;
+  text-transform: uppercase;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -66,7 +75,7 @@ class App extends React.Component {
 
     return (
       <>
-        <h4>REVIEWS</h4>
+        <SectionHeading>reviews</SectionHeading>
         <ReviewList reviews={reviews} />
       </>
     );
