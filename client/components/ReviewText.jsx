@@ -14,6 +14,7 @@ grid-area: review;
 background: #f4cae4;
 line-height: 24px;
 font-size: 16px;
+margin-bottom: 16px;
 `;
 
 export default StyledReviewText;

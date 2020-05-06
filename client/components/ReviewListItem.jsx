@@ -4,12 +4,13 @@ import styled from 'styled-components';
 
 import ReviewBadge from './ReviewBadge';
 import ReviewHeader from './ReviewHeader';
+import ReviewOwned from './ReviewOwned';
 import ReviewText from './ReviewText';
 
 const Container = styled.div`
 display: grid;
 grid-template-columns: 60px 7fr 3fr;
-grid-template-rows: auto auto 30px 30px 30px;
+grid-template-rows: auto auto auto 30px 30px;
 grid-template-areas:
 "avatar header    badge"
 "   .   review    ratings"
@@ -23,11 +24,6 @@ font-family: sans-serif;
 const Avatar = styled.div`
 grid-area: avatar;
 background: #b3e2cd;
-`;
-
-const Owned = styled.div`
-grid-area: owned;
-background: #e6f5c9;
 `;
 
 const Recommend = styled.div`
@@ -63,7 +59,7 @@ const ReviewListItem = (props) => {
         <ReviewHeader review={review} />
         <ReviewBadge badge={review.purchaseOnline} />
         <ReviewText review={review.review} />
-        <Owned />
+        <ReviewOwned owned={review.ownershipBracket} />
         <Recommend />
         <Ratings />
         <Helpful />
