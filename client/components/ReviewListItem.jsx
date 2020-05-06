@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import ReviewBadge from './ReviewBadge';
 import ReviewHeader from './ReviewHeader';
 import ReviewText from './ReviewText';
 
@@ -15,16 +16,13 @@ grid-template-areas:
 "   .   owned     ratings"
 "   .   recommend ratings"
 "   .   helpful   helpful";
+padding: 10px 20px 10px 10px;
+font-family: sans-serif;
 `;
 
 const Avatar = styled.div`
 grid-area: avatar;
 background: #b3e2cd;
-`;
-
-const Badge = styled.div`
-grid-area: badge;
-background: #cbd5e8;
 `;
 
 const Owned = styled.div`
@@ -47,21 +45,30 @@ grid-area: helpful;
 background: #fff2ae;
 `;
 
+const Rule = styled.hr`
+  border: none;
+  border-top: 1px solid;
+  border-color: #d9d9d9;
+`;
+
 
 const ReviewListItem = (props) => {
   const { review } = props;
 
   return (
-    <Container>
-      <Avatar />
-      <ReviewHeader review={review} />
-      <Badge />
-      <ReviewText review={review} />
-      <Owned />
-      <Recommend />
-      <Ratings />
-      <Helpful />
-    </Container>
+    <>
+      <Rule />
+      <Container>
+        <Avatar />
+        <ReviewHeader review={review} />
+        <ReviewBadge badge={review.purchaseOnline} />
+        <ReviewText review={review.review} />
+        <Owned />
+        <Recommend />
+        <Ratings />
+        <Helpful />
+      </Container>
+    </>
   );
 };
 
