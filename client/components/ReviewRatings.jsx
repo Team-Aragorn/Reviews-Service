@@ -2,19 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import BarRating from './BarRating';
+
 const ReviewRatings = ({ className, review }) => (
   <div className={className}>
     Graphics
     <br />
+    <BarRating rating={review.graphics} />
     Gameplay
     <br />
+    <BarRating rating={review.gameplay} />
     Lasting Appeal
+    <br />
+    <BarRating rating={review.appeal} />
   </div>
 );
 
 const StyledReviewRatings = styled(ReviewRatings)`
 grid-area: ratings;
-background: #cccccc;
 font-size: 12px;
 line-height: 16px;
 margin-left: 20px;
