@@ -11,7 +11,6 @@ const ReviewText = ({ className, review }) => (
 
 const StyledReviewText = styled(ReviewText)`
 grid-area: review;
-background: #f4cae4;
 line-height: 24px;
 font-size: 16px;
 margin-bottom: 16px;

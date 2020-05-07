@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCertificate } from '@fortawesome/free-solid-svg-icons';
+
+const StyledFA = styled(FontAwesomeIcon)`
+  color: #da291c;
+  margin-right: 5px;
+`;
 
 const ReviewBadge = ({ className, badge }) => {
   if (badge) {
     return (
       <div className={className}>
-        * Verified Purchaser
+        <StyledFA icon={faCertificate} />
+        Verified Purchaser
       </div>
     );
   }
@@ -17,7 +25,6 @@ const StyledReviewBadge = styled(ReviewBadge)`
 grid-area: badge;
 align-self: start;
 justify-self: end;
-background: #cbd5e8;
 font-size: 16px;
 line-height: 25px;
 `;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 
 import ReviewBadge from './ReviewBadge';
 import ReviewHeader from './ReviewHeader';
@@ -24,8 +26,10 @@ font-family: sans-serif;
 `;
 
 const Avatar = styled.div`
-grid-area: avatar;
-background: #b3e2cd;
+  grid-area: avatar;
+  color: #bbb;
+  font-size: 50px;
+  justify-self: center;
 `;
 
 const Helpful = styled.div`
@@ -47,7 +51,7 @@ const ReviewListItem = (props) => {
     <>
       <Rule />
       <Container>
-        <Avatar />
+        <Avatar><FontAwesomeIcon icon={faUserAlt} /></Avatar>
         <ReviewHeader review={review} />
         <ReviewBadge badge={review.purchaseOnline} />
         <ReviewText review={review.review} />
