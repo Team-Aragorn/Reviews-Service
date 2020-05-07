@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCertificate } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
 const StyledFA = styled(FontAwesomeIcon)`
   color: #da291c;
@@ -13,7 +13,7 @@ const ReviewBadge = ({ className, badge }) => {
   if (badge) {
     return (
       <div className={className}>
-        <StyledFA icon={faCertificate} />
+        <StyledFA icon={faCheckCircle} />
         Verified Purchaser
       </div>
     );
