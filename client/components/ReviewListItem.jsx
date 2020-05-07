@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ReviewBadge from './ReviewBadge';
 import ReviewHeader from './ReviewHeader';
 import ReviewOwned from './ReviewOwned';
+import ReviewRatings from './ReviewRatings';
 import ReviewRecommend from './ReviewRecommend';
 import ReviewText from './ReviewText';
 
@@ -25,11 +26,6 @@ font-family: sans-serif;
 const Avatar = styled.div`
 grid-area: avatar;
 background: #b3e2cd;
-`;
-
-const Ratings = styled.div`
-grid-area: ratings;
-background: #cccccc;
 `;
 
 const Helpful = styled.div`
@@ -57,7 +53,7 @@ const ReviewListItem = (props) => {
         <ReviewText review={review.review} />
         <ReviewOwned owned={review.ownershipBracket} />
         <ReviewRecommend recommend={review.recommend} />
-        <Ratings />
+        <ReviewRatings review={review} />
         <Helpful />
       </Container>
     </>
