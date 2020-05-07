@@ -1,40 +1,43 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 import ReviewListItem from '../../../client/components/ReviewListItem';
+import ReviewBadge from '../../../client/components/ReviewBadge';
+import ReviewHeader from '../../../client/components/ReviewHeader';
+import ReviewOwned from '../../../client/components/ReviewOwned';
+import ReviewRecommend from '../../../client/components/ReviewRecommend';
+import ReviewText from '../../../client/components/ReviewText';
+import reviews from '../dummyData/dummyData';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const review = {
-  gameId: 0,
-  date: Date.now(),
-  overall: 1,
-  title: 'The Title',
-  review: '',
-  recommend: false,
-  nickname: '',
-  location: '',
-  email: '',
-  buyForSelf: false,
-  ageBracket: 1,
-  gender: 1,
-  graphics: 1,
-  gameplay: 1,
-  appeal: 1,
-  ownershipBracket: 1,
-  purchaseOnline: false,
-  readReviews: false,
-  recommendBGS: 1,
-  meta: {
-    helpful: 1,
-    unhelpful: 1,
-  },
-};
+const review = reviews[0];
+
 
 describe('<ReviewListItem />', () => {
+  it('Renders the verified badge.', () => {
+    let wrapper = shallow(<ReviewListItem review={review} />);
+    expect(wrapper.find(ReviewBadge)).toHaveLength(1);
+  });
 
-  it('Renders the title', () => {
-    const wrapper = shallow(<ReviewListItem review={review}/>);
-    expect(wrapper.contains(<h4>The Title</h4>)).toBe(true);
+  it('Renders the header.', () => {
+    let wrapper = shallow(<ReviewListItem review={review} />);
+    expect(wrapper.find(ReviewHeader)).toHaveLength(1);
+  });
+
+  it('Renders the length of time owned.', () => {
+    let wrapper = shallow(<ReviewListItem review={review} />);
+    expect(wrapper.find(ReviewOwned)).toHaveLength(1);
+  });
+
+  it('Renders the recommendation.', () => {
+    let wrapper = shallow(<ReviewListItem review={review} />);
+    expect(wrapper.find(ReviewRecommend)).toHaveLength(1);
+  });
+
+  it('Renders the review text.', () => {
+    let wrapper = shallow(<ReviewListItem review={review} />);
+    expect(wrapper.find(ReviewText)).toHaveLength(1);
   });
 });

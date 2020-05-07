@@ -22,6 +22,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "javascript-time-ago": "^2.0.7",
     "mongoose": "^5.9.11",
     "path": "^0.12.7",
@@ -52,7 +53,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
-    "faker": "^4.1.0",
     "jest": "^25.5.3",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",

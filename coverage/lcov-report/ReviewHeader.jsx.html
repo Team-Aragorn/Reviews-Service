@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for ReviewListItem.jsx</title>
+    <title>Code coverage report for ReviewHeader.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> ReviewListItem.jsx</h1>
+        <h1><a href="index.html">All files</a> ReviewHeader.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -160,15 +160,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,12 +181,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,14 +202,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,6 +214,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,72 +252,72 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ReactTimeAgo from 'react-time-ago';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 &nbsp;
-import ReviewBadge from './ReviewBadge';
-import ReviewHeader from './ReviewHeader';
-import ReviewOwned from './ReviewOwned';
-import ReviewRecommend from './ReviewRecommend';
-import ReviewText from './ReviewText';
+TimeAgo.addLocale(en);
 &nbsp;
 const Container = styled.div`
 display: grid;
-grid-template-columns: 60px 7fr 3fr;
-grid-template-rows: auto auto auto auto 30px;
+grid-template-columns: 125px auto;
+grid-template-rows: auto;
 grid-template-areas:
-"avatar header    badge"
-"   .   review    ratings"
-"   .   owned     ratings"
-"   .   recommend ratings"
-"   .   helpful   helpful";
-padding: 10px 20px 10px 10px;
-font-family: sans-serif;
+"stars signature"
+"title title";
 `;
 &nbsp;
-const Avatar = styled.div`
-grid-area: avatar;
-background: #b3e2cd;
+const Stars = styled.div`
+grid-area: stars;
+font-size: 25px;
 `;
 &nbsp;
-const Ratings = styled.div`
-grid-area: ratings;
-background: #cccccc;
+const Signature = styled.div`
+grid-area: signature;
+align-self: center;
+font-size: 12px;
 `;
 &nbsp;
-const Helpful = styled.div`
-grid-area: helpful;
-background: #fff2ae;
+const Nickname = styled.span`
+  font-weight: 700;
 `;
 &nbsp;
-const Rule = styled.hr`
-  border: none;
-  border-top: 1px solid;
-  border-color: #d9d9d9;
+const Date = styled.span`
 `;
 &nbsp;
+const Title = styled.h3`
+  grid-area: title;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0px;
+  margin-bottom: 1em;
+  padding: 0px;
+  text-transform: capitalize;
+`;
 &nbsp;
-const ReviewListItem = (props) =&gt; {
-  const { review } = props;
+const ReviewHeader = ({ className, review }) =&gt; (
+  &lt;Container className={className}&gt;
+    &lt;Stars&gt;☆☆☆☆☆&lt;/Stars&gt;
+    &lt;Signature&gt;
+      &lt;Nickname&gt;{review.nickname}&lt;/Nickname&gt;
+      &lt;Date&gt;
+        {' · '}
+        &lt;ReactTimeAgo date={new window.Date(review.date)} /&gt;
+      &lt;/Date&gt;
+    &lt;/Signature&gt;
+    &lt;Title&gt;{review.title}&lt;/Title&gt;
+  &lt;/Container&gt;
+);
 &nbsp;
-  return (
-    &lt;&gt;
-      &lt;Rule /&gt;
-      &lt;Container&gt;
-        &lt;Avatar /&gt;
-        &lt;ReviewHeader review={review} /&gt;
-        &lt;ReviewBadge badge={review.purchaseOnline} /&gt;
-        &lt;ReviewText review={review.review} /&gt;
-        &lt;ReviewOwned owned={review.ownershipBracket} /&gt;
-        &lt;ReviewRecommend recommend={review.recommend} /&gt;
-        &lt;Ratings /&gt;
-        &lt;Helpful /&gt;
-      &lt;/Container&gt;
-    &lt;/&gt;
-  );
-};
+const StyledReviewHeader = styled(ReviewHeader)`
+grid-area: header;
+background: #fdcdac;
+`;
 &nbsp;
-export default ReviewListItem;
+export default StyledReviewHeader;
 &nbsp;
-ReviewListItem.propTypes = {
+ReviewHeader.propTypes = {
+  className: PropTypes.string.isRequired,
   review: PropTypes.shape({
     _id: PropTypes.string,
     gameId: PropTypes.number,
