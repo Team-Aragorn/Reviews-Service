@@ -21,6 +21,7 @@ grid-template-areas:
 "   .   owned     ratings"
 "   .   recommend ratings"
 "   .   helpful   helpful";
+gap: 0px 10px;
 padding: 10px 20px 10px 10px;
 font-family: sans-serif;
 `;
