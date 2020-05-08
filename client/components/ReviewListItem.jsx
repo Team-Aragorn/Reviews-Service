@@ -6,6 +6,7 @@ import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 
 import ReviewBadge from './ReviewBadge';
 import ReviewHeader from './ReviewHeader';
+import ReviewHelpful from './ReviewHelpful';
 import ReviewOwned from './ReviewOwned';
 import ReviewRatings from './ReviewRatings';
 import ReviewRecommend from './ReviewRecommend';
@@ -14,7 +15,7 @@ import ReviewText from './ReviewText';
 const Container = styled.div`
 display: grid;
 grid-template-columns: 60px 7fr 3fr;
-grid-template-rows: auto auto auto auto 30px;
+grid-template-rows: auto;
 grid-template-areas:
 "avatar header    badge"
 "   .   review    ratings"
@@ -30,11 +31,6 @@ const Avatar = styled.div`
   color: #bbb;
   font-size: 50px;
   justify-self: center;
-`;
-
-const Helpful = styled.div`
-grid-area: helpful;
-background: #fff2ae;
 `;
 
 const Rule = styled.hr`
@@ -58,7 +54,7 @@ const ReviewListItem = (props) => {
         <ReviewOwned owned={review.ownershipBracket} />
         <ReviewRecommend recommend={review.recommend} />
         <ReviewRatings review={review} />
-        <Helpful />
+        <ReviewHelpful yes={review.meta.helpful} no={review.meta.unhelpful} />
       </Container>
     </>
   );
