@@ -5,9 +5,16 @@ import ReviewList from './components/ReviewList';
 
 const SectionHeading = styled.h1`
   font-size: 34px;
-  font-family: sans-serif;
+  font-weight: 400;
   line-height: 35px;
   text-transform: uppercase;
+`;
+
+const Container = styled.div`
+  max-width: 1280px;
+  font-family: sans-serif;
+  margin: auto;
+  padding: 5px;
 `;
 
 class App extends React.Component {
@@ -73,10 +80,12 @@ class App extends React.Component {
     const { reviews } = this.state;
 
     return (
-      <>
+      <Container>
         <SectionHeading>reviews</SectionHeading>
-        <ReviewList reviews={reviews} />
-      </>
+        <Container>
+          <ReviewList reviews={reviews} />
+        </Container>
+      </Container>
     );
   }
 }

@@ -5,26 +5,24 @@ import ReactTimeAgo from 'react-time-ago';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 
+import StarRating from './StarRating';
+
 TimeAgo.addLocale(en);
 
 const Container = styled.div`
 display: grid;
-grid-template-columns: 125px auto;
+grid-template-columns: 114px auto;
 grid-template-rows: auto;
 grid-template-areas:
 "stars signature"
 "title title";
 `;
 
-const Stars = styled.div`
-grid-area: stars;
-font-size: 25px;
-`;
-
 const Signature = styled.div`
 grid-area: signature;
 align-self: center;
 font-size: 12px;
+margin-left: 5px;
 `;
 
 const Nickname = styled.span`
@@ -46,7 +44,7 @@ const Title = styled.h3`
 
 const ReviewHeader = ({ className, review }) => (
   <Container className={className}>
-    <Stars>☆☆☆☆☆</Stars>
+    <StarRating rating={review.overall} />
     <Signature>
       <Nickname>{review.nickname}</Nickname>
       <Date>
@@ -59,8 +57,7 @@ const ReviewHeader = ({ className, review }) => (
 );
 
 const StyledReviewHeader = styled(ReviewHeader)`
-grid-area: header;
-background: #fdcdac;
+  grid-area: header;
 `;
 
 export default StyledReviewHeader;

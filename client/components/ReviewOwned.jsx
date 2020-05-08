@@ -40,7 +40,6 @@ const ReviewOwned = ({ className, owned }) => (
 
 const StyledReviewOwned = styled(ReviewOwned)`
 grid-area: owned;
-background: #e6f5c9;
 font-size: 12px;
 line-height: 24px;
 margin-bottom: 16px;
