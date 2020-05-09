@@ -22,7 +22,7 @@ const Button = styled.button`
   &:disabled {
     background-color: inherit;
     cursor: auto;
-    color: 000;
+    color: ${(props) => props.voted ? '#da291c' : '#000'};
     box-shadow: none;
     text-shadow: 0 0 .65px #333, 0 0 .65px #333;
   }
@@ -41,6 +41,8 @@ class ReviewHelpful extends React.Component {
 
     this.state = {
       helpfulSubmitted: false,
+      yesVote: false,
+      noVote: false,
       reportSubmitted: false,
     };
 
@@ -50,34 +52,61 @@ class ReviewHelpful extends React.Component {
   }
 
   handleYesClick() {
-    this.setState({
-      helpfulSubmitted: true,
-    });
+    this.submitVote('yes')
+      .then(() => {
+        this.setState({
+          helpfulSubmitted: true,
+          yesVote: true,
+        });
+      });
   }
 
   handleNoClick() {
-    this.setState({
-      helpfulSubmitted: true,
-    });
+    this.submitVote('no')
+      .then(() => {
+        this.setState({
+          helpfulSubmitted: true,
+          noVote: true,
+        });
+      });
   }
 
   handleReportClick() {
     this.setState({
       reportSubmitted: true,
     });
+
+    console.log('Review has been reported!\nTODO: Report handling.');
+  }
+
+  submitVote(voteString) {
+    const { id, endpoint } = this.props;
+
+    const body = { id, voteString };
+
+    return fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+      .then((response) => response.json());
   }
 
   render() {
     const { className, yes, no } = this.props;
-    const { helpfulSubmitted, reportSubmitted } = this.state;
+    const {
+      helpfulSubmitted,
+      yesVote,
+      noVote,
+      reportSubmitted,
+    } = this.state;
 
     return (
       <div className={className}>
         <Text>Helpful?</Text>
-        <Button disabled={helpfulSubmitted} onClick= {this.handleYesClick}>
+        <Button disabled={helpfulSubmitted} onClick={this.handleYesClick} voted={yesVote}>
           {`Yes · ${yes}`}
         </Button>
-        <Button disabled={helpfulSubmitted} onClick={this.handleNoClick}>
+        <Button disabled={helpfulSubmitted} onClick={this.handleNoClick} voted={noVote}>
           {`No · ${no}`}
         </Button>
         <Button disabled={reportSubmitted} onClick={this.handleReportClick}>
@@ -100,4 +129,6 @@ ReviewHelpful.propTypes = {
   className: PropTypes.string.isRequired,
   yes: PropTypes.number.isRequired,
   no: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  endpoint: PropTypes.string.isRequired,
 };

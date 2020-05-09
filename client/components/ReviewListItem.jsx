@@ -41,7 +41,7 @@ const Rule = styled.hr`
 
 
 const ReviewListItem = (props) => {
-  const { review } = props;
+  const { review, endpoint } = props;
 
   return (
     <>
@@ -54,7 +54,12 @@ const ReviewListItem = (props) => {
         <ReviewOwned owned={review.ownershipBracket} />
         <ReviewRecommend recommend={review.recommend} />
         <ReviewRatings review={review} />
-        <ReviewHelpful yes={review.meta.helpful} no={review.meta.unhelpful} />
+        <ReviewHelpful
+          yes={review.meta.helpful}
+          no={review.meta.unhelpful}
+          id={review._id}
+          endpoint={endpoint}
+        />
       </Container>
     </>
   );
@@ -89,4 +94,5 @@ ReviewListItem.propTypes = {
       unhelpful: PropTypes.number,
     }),
   }).isRequired,
+  endpoint: PropTypes.string.isRequired,
 };
