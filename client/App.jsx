@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ReviewList from './components/ReviewList';
+import ReviewSummary from './components/ReviewSummary';
 
 const SectionHeading = styled.h1`
   font-size: 34px;
@@ -84,6 +85,7 @@ class App extends React.Component {
       <Container>
         <SectionHeading>reviews</SectionHeading>
         <Container>
+          <ReviewSummary />
           <ReviewList reviews={reviews} endpoint={this.REVIEWSBASE} redraw={this.fetchReviews} />
         </Container>
       </Container>
