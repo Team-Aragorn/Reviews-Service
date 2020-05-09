@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import RatingSnapshot from './RatingSnapshot';
+
 
 const Container = styled.div`
 display: grid;
@@ -13,11 +15,6 @@ grid-template-areas:
 gap: 10px 10px;
 padding: 20px 10px;
 margin-bottom: 50px;
-`;
-
-const Snapshot = styled.div`
-  grid-area: snapshot;
-  background-color: #fbb4ae;
 `;
 
 const Average = styled.div`
@@ -37,13 +34,10 @@ const Unfavorable = styled.div`
 
 const ReviewSummary = (props) => {
   const { counts, averages, total } = props;
-  console.log(counts);
-  console.log(averages);
-  console.log(total);
 
   return (
     <Container>
-      <Snapshot counts={counts} total={total} />
+      <RatingSnapshot counts={counts} total={total} />
       <Average averages={averages} />
       <Favorable />
       <Unfavorable />

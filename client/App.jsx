@@ -23,7 +23,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currentGame: 0,
+      currentGame: 1,
       reviews: [{
         _id: '0',
         gameId: 0,
@@ -66,14 +66,14 @@ class App extends React.Component {
     this.fetchReviews(gameId[1]);
   }
 
-  fetchReviews(currentGame = this.state.gameId) {
+  fetchReviews(currentGame = this.state.currentGame) {
     fetch(`${this.REVIEWSBASE}${currentGame}`)
       .then((response) => response.json())
       .then((data) => { this.digestReviews(currentGame, data); })
       .catch((err) => { console.log(err); });
   }
 
-  digestReviews(gameId, reviews) {
+  digestReviews(currentGame, reviews) {
     let oneStarCount = 0;
     let twoStarCount = 0;
     let threeStarCount = 0;
@@ -104,7 +104,7 @@ class App extends React.Component {
     }
 
     this.setState({
-      gameId,
+      currentGame,
       reviews,
       ratingCounts: [oneStarCount, twoStarCount, threeStarCount, fourStarCount, fiveStarCount],
       ratingAverages: [
@@ -118,7 +118,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { reviews, ratingCounts, ratingAverages, totalReviews } = this.state;
+    const {
+      reviews,
+      ratingCounts,
+      ratingAverages,
+      totalReviews,
+    } = this.state;
 
     return (
       <Container>
