@@ -50,42 +50,81 @@ class App extends React.Component {
           unhelpful: 1,
         },
       }],
+      ratingCounts: [],
+      ratingAverages: [],
+      totalReviews: 0,
     };
 
     this.REVIEWSBASE = 'http://localhost:3002/reviews/';
     this.fetchReviews = this.fetchReviews.bind(this);
+    this.digestReviews = this.digestReviews.bind(this);
   }
 
   componentDidMount() {
     const gameId = window.location.pathname.match(/\/games\/(\d+)\//);
-    this.setState({
-      currentGame: gameId[1],
-    }, () => {
-      this.fetchReviews();
-    });
+
+    this.fetchReviews(gameId[1]);
   }
 
-  fetchReviews() {
-    const { currentGame } = this.state;
-
+  fetchReviews(currentGame = this.state.gameId) {
     fetch(`${this.REVIEWSBASE}${currentGame}`)
       .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          reviews: data,
-        });
-      })
+      .then((data) => { this.digestReviews(currentGame, data); })
       .catch((err) => { console.log(err); });
   }
 
+  digestReviews(gameId, reviews) {
+    let oneStarCount = 0;
+    let twoStarCount = 0;
+    let threeStarCount = 0;
+    let fourStarCount = 0;
+    let fiveStarCount = 0;
+    let starSum = 0;
+    let graphicSum = 0;
+    let gameplaySum = 0;
+    let appealSum = 0;
+
+    for (let i = 0; i < reviews.length; i += 1) {
+      if (reviews[i].overall === 1) {
+        oneStarCount += 1;
+      } else if (reviews[i].overall === 2) {
+        twoStarCount += 1;
+      } else if (reviews[i].overall === 3) {
+        threeStarCount += 1;
+      } else if (reviews[i].overall === 4) {
+        fourStarCount += 1;
+      } else if (reviews[i].overall === 5) {
+        fiveStarCount += 1;
+      }
+
+      starSum += reviews[i].overall;
+      graphicSum += reviews[i].graphics;
+      gameplaySum += reviews[i].gameplay;
+      appealSum += reviews[i].appeal;
+    }
+
+    this.setState({
+      gameId,
+      reviews,
+      ratingCounts: [oneStarCount, twoStarCount, threeStarCount, fourStarCount, fiveStarCount],
+      ratingAverages: [
+        starSum / reviews.length,
+        graphicSum / reviews.length,
+        gameplaySum / reviews.length,
+        appealSum / reviews.length,
+      ],
+      totalReviews: reviews.length,
+    });
+  }
+
   render() {
-    const { reviews } = this.state;
+    const { reviews, ratingCounts, ratingAverages, totalReviews } = this.state;
 
     return (
       <Container>
         <SectionHeading>reviews</SectionHeading>
         <Container>
-          <ReviewSummary />
+          <ReviewSummary counts={ratingCounts} averages={ratingAverages} total={totalReviews} />
           <ReviewList reviews={reviews} endpoint={this.REVIEWSBASE} redraw={this.fetchReviews} />
         </Container>
       </Container>

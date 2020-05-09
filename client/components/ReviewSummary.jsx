@@ -36,12 +36,15 @@ const Unfavorable = styled.div`
 `;
 
 const ReviewSummary = (props) => {
-  const { review, endpoint, redraw } = props;
+  const { counts, averages, total } = props;
+  console.log(counts);
+  console.log(averages);
+  console.log(total);
 
   return (
     <Container>
-      <Snapshot />
-      <Average />
+      <Snapshot counts={counts} total={total} />
+      <Average averages={averages} />
       <Favorable />
       <Unfavorable />
     </Container>
@@ -51,5 +54,7 @@ const ReviewSummary = (props) => {
 export default ReviewSummary;
 
 ReviewSummary.propTypes = {
-
+  counts: PropTypes.arrayOf(PropTypes.number).isRequired,
+  averages: PropTypes.arrayOf(PropTypes.number).isRequired,
+  total: PropTypes.number.isRequired,
 };
