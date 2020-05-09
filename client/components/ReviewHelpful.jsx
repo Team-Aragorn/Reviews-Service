@@ -86,9 +86,11 @@ class ReviewHelpful extends React.Component {
 
     return fetch(endpoint, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(body),
-    })
-      .then((response) => response.json());
+    });
   }
 
   render() {
