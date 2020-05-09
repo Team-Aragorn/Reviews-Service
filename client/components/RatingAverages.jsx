@@ -15,7 +15,7 @@ const Title = styled.h3`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: auto 160px auto;
+  grid-template-columns: auto 144px auto;
   gap: 0px 20px;
   font-size: 16;
   width: 60%;
@@ -23,7 +23,6 @@ const Container = styled.div`
 
 const StyledStars = styled(StarRating)`
   margin-bottom: 14px;
-  width: 113px;
 `;
 
 const RatingAverages = ({ averages }) => (

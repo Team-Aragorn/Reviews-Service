@@ -8,19 +8,25 @@ import RatingAverages from './RatingAverages';
 
 const Container = styled.div`
 display: grid;
-grid-template-columns: 1fr 1fr;
-grid-template-rows: auto 250px;
 grid-template-areas:
-"snapshot  average"
-"favorable unfavorable";
+  "snapshot"
+  "average"
+  "favorable"
+  "unfavorable";
+grid-template-rows: auto auto 250px 250px;
 gap: 10px 10px;
+
+@media (min-width: 768px) {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "snapshot  average"
+    "favorable unfavorable";
+  grid-template-rows: auto 250px;
+}
+
+
 padding: 20px 10px;
 margin-bottom: 50px;
-`;
-
-const Average = styled.div`
-  grid-area: average;
-  background-color: #b3cde3;
 `;
 
 const Favorable = styled.div`
