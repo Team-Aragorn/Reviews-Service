@@ -41,7 +41,6 @@ const BarRating = ({ className, rating }) => (
 );
 
 const StyledBarRating = styled(BarRating)`
-  grid-area: stars;
   font-size: 20px;
   line-height: 24px;
   align-self: center;

@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import RatingSnapshot from './RatingSnapshot';
+import RatingAverages from './RatingAverages';
 
 
 const Container = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr;
-grid-template-rows: 250px 250px;
+grid-template-rows: auto 250px;
 grid-template-areas:
 "snapshot  average"
 "favorable unfavorable";
@@ -38,7 +39,7 @@ const ReviewSummary = (props) => {
   return (
     <Container>
       <RatingSnapshot counts={counts} total={total} />
-      <Average averages={averages} />
+      <RatingAverages averages={averages} />
       <Favorable />
       <Unfavorable />
     </Container>

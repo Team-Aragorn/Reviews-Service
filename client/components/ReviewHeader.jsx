@@ -42,9 +42,13 @@ const Title = styled.h3`
   text-transform: capitalize;
 `;
 
+const StyledStars = styled(StarRating)`
+  grid-area: stars;
+`;
+
 const ReviewHeader = ({ className, review }) => (
   <Container className={className}>
-    <StarRating rating={review.overall} />
+    <StyledStars rating={review.overall} />
     <Signature>
       <Nickname>{review.nickname}</Nickname>
       <Date>

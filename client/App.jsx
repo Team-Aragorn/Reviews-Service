@@ -108,10 +108,10 @@ class App extends React.Component {
       reviews,
       ratingCounts: [oneStarCount, twoStarCount, threeStarCount, fourStarCount, fiveStarCount],
       ratingAverages: [
-        starSum / reviews.length,
-        graphicSum / reviews.length,
-        gameplaySum / reviews.length,
-        appealSum / reviews.length,
+        (starSum / reviews.length).toFixed(2),
+        (graphicSum / reviews.length).toFixed(2),
+        (gameplaySum / reviews.length).toFixed(2),
+        (appealSum / reviews.length).toFixed(2),
       ],
       totalReviews: reviews.length,
     });
