@@ -52,6 +52,7 @@ class App extends React.Component {
     };
 
     this.REVIEWSBASE = 'http://localhost:3002/reviews/';
+    this.fetchReviews = this.fetchReviews.bind(this);
   }
 
   componentDidMount() {
@@ -83,7 +84,7 @@ class App extends React.Component {
       <Container>
         <SectionHeading>reviews</SectionHeading>
         <Container>
-          <ReviewList reviews={reviews} />
+          <ReviewList reviews={reviews} endpoint={this.REVIEWSBASE} redraw={this.fetchReviews} />
         </Container>
       </Container>
     );
