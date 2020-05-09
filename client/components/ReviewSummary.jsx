@@ -4,50 +4,53 @@ import styled from 'styled-components';
 
 import RatingSnapshot from './RatingSnapshot';
 import RatingAverages from './RatingAverages';
-
+import ReviewTiny from './ReviewTiny';
 
 const Container = styled.div`
-display: grid;
-grid-template-areas:
-  "snapshot"
-  "average"
-  "favorable"
-  "unfavorable";
-grid-template-rows: auto auto 250px 250px;
-gap: 10px 10px;
-
-@media (min-width: 768px) {
-  grid-template-columns: 1fr 1fr;
+  display: grid;
   grid-template-areas:
-    "snapshot  average"
-    "favorable unfavorable";
-  grid-template-rows: auto 250px;
-}
+    "snapshot"
+    "average"
+    "favorable"
+    "unfavorable";
+  grid-template-rows: auto auto 250px 250px;
+  gap: 30px 10px;
 
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "snapshot  average"
+      "favorable unfavorable";
+    grid-template-rows: auto 250px;
+  }
 
-padding: 20px 10px;
-margin-bottom: 50px;
+  padding: 20px 10px;
+  margin-bottom: 0px;
 `;
 
-const Favorable = styled.div`
+const Favorable = styled(ReviewTiny)`
   grid-area: favorable;
-  background-color: #ccebc5;
 `;
 
-const Unfavorable = styled.div`
+const Unfavorable = styled(ReviewTiny)`
   grid-area: unfavorable;
-  background-color: #decbe4;
 `;
 
 const ReviewSummary = (props) => {
-  const { counts, averages, total } = props;
+  const {
+    counts,
+    averages,
+    total,
+    favorable,
+    unfavorable,
+  } = props;
 
   return (
     <Container>
       <RatingSnapshot counts={counts} total={total} />
       <RatingAverages averages={averages} />
-      <Favorable />
-      <Unfavorable />
+      <Favorable review={favorable} title="Favorable" />
+      <Unfavorable review={unfavorable} title="Critical" />
     </Container>
   );
 };
@@ -58,4 +61,56 @@ ReviewSummary.propTypes = {
   counts: PropTypes.arrayOf(PropTypes.number).isRequired,
   averages: PropTypes.arrayOf(PropTypes.number).isRequired,
   total: PropTypes.number.isRequired,
+  favorable: PropTypes.shape({
+    _id: PropTypes.string,
+    gameId: PropTypes.number,
+    date: PropTypes.string,
+    overall: PropTypes.number,
+    title: PropTypes.string,
+    review: PropTypes.string,
+    recommend: PropTypes.bool,
+    nickname: PropTypes.string,
+    location: PropTypes.string,
+    email: PropTypes.string,
+    buyForSelf: PropTypes.bool,
+    ageBracket: PropTypes.number,
+    gender: PropTypes.number,
+    graphics: PropTypes.number,
+    gameplay: PropTypes.number,
+    appeal: PropTypes.number,
+    ownershipBracket: PropTypes.number,
+    purchaseOnline: PropTypes.bool,
+    readReviews: PropTypes.bool,
+    recommendBGS: PropTypes.number,
+    meta: PropTypes.shape({
+      helpful: PropTypes.number,
+      unhelpful: PropTypes.number,
+    }),
+  }).isRequired,
+  unfavorable: PropTypes.shape({
+    _id: PropTypes.string,
+    gameId: PropTypes.number,
+    date: PropTypes.string,
+    overall: PropTypes.number,
+    title: PropTypes.string,
+    review: PropTypes.string,
+    recommend: PropTypes.bool,
+    nickname: PropTypes.string,
+    location: PropTypes.string,
+    email: PropTypes.string,
+    buyForSelf: PropTypes.bool,
+    ageBracket: PropTypes.number,
+    gender: PropTypes.number,
+    graphics: PropTypes.number,
+    gameplay: PropTypes.number,
+    appeal: PropTypes.number,
+    ownershipBracket: PropTypes.number,
+    purchaseOnline: PropTypes.bool,
+    readReviews: PropTypes.bool,
+    recommendBGS: PropTypes.number,
+    meta: PropTypes.shape({
+      helpful: PropTypes.number,
+      unhelpful: PropTypes.number,
+    }),
+  }).isRequired,
 };

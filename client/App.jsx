@@ -50,8 +50,60 @@ class App extends React.Component {
           unhelpful: 1,
         },
       }],
-      ratingCounts: [],
-      ratingAverages: [],
+      mostFavorable: {
+        _id: '0',
+        gameId: 0,
+        date: `${new Date()}`,
+        overall: 1,
+        title: '',
+        review: '',
+        recommend: false,
+        nickname: '',
+        location: '',
+        email: '',
+        buyForSelf: false,
+        ageBracket: 1,
+        gender: 1,
+        graphics: 1,
+        gameplay: 1,
+        appeal: 1,
+        ownershipBracket: 1,
+        purchaseOnline: false,
+        readReviews: false,
+        recommendBGS: 1,
+        meta: {
+          helpful: 1,
+          unhelpful: 1,
+        },
+      },
+      mostUnfavorable: {
+        _id: '0',
+        gameId: 0,
+        date: `${new Date()}`,
+        overall: 1,
+        title: '',
+        review: '',
+        recommend: false,
+        nickname: '',
+        location: '',
+        email: '',
+        buyForSelf: false,
+        ageBracket: 1,
+        gender: 1,
+        graphics: 1,
+        gameplay: 1,
+        appeal: 1,
+        ownershipBracket: 1,
+        purchaseOnline: false,
+        readReviews: false,
+        recommendBGS: 1,
+        meta: {
+          helpful: 1,
+          unhelpful: 1,
+        },
+      },
+      ratingCounts: [0, 0, 0, 0, 0],
+      ratingAverages: [1, 1, 1, 1],
       totalReviews: 0,
     };
 
@@ -119,6 +171,8 @@ class App extends React.Component {
 
   render() {
     const {
+      mostFavorable,
+      mostUnfavorable,
       reviews,
       ratingCounts,
       ratingAverages,
@@ -129,7 +183,13 @@ class App extends React.Component {
       <Container>
         <SectionHeading>reviews</SectionHeading>
         <Container>
-          <ReviewSummary counts={ratingCounts} averages={ratingAverages} total={totalReviews} />
+          <ReviewSummary
+            counts={ratingCounts}
+            averages={ratingAverages}
+            total={totalReviews}
+            favorable={mostFavorable}
+            unfavorable={mostUnfavorable}
+          />
           <ReviewList reviews={reviews} endpoint={this.REVIEWSBASE} redraw={this.fetchReviews} />
         </Container>
       </Container>
