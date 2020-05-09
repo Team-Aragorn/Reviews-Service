@@ -80,7 +80,7 @@ class ReviewHelpful extends React.Component {
   }
 
   submitVote(voteString) {
-    const { id, endpoint } = this.props;
+    const { id, endpoint, redraw } = this.props;
 
     const body = { id, voteString };
 
@@ -90,7 +90,8 @@ class ReviewHelpful extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
-    });
+    })
+      .then(() => { redraw(); });
   }
 
   render() {
@@ -133,4 +134,5 @@ ReviewHelpful.propTypes = {
   no: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   endpoint: PropTypes.string.isRequired,
+  redraw: PropTypes.func.isRequired,
 };

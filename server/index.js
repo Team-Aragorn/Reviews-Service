@@ -1,6 +1,7 @@
 const express = require('express');
-const db = require('./db/index.js');
 const bodyParser = require('body-parser');
+
+const db = require('./db/index.js');
 
 const app = express();
 const PORT = 3002;
@@ -28,18 +29,18 @@ app.post('/reviews/', jsonParser, (req, res) => {
       res.status(500).send(err);
     } else if (req.body.voteString === 'yes') {
       review.meta.helpful += 1;
-      review.save((err, review) => {
+      review.save((error) => {
         if (err) {
-          res.status(500).send(err);
+          res.status(500).send(error);
         } else {
           res.status(202).send();
         }
       });
     } else if (req.body.voteString === 'no') {
       review.meta.unhelpful += 1;
-      review.save((err, review) => {
+      review.save((error) => {
         if (err) {
-          res.status(500).send(err);
+          res.status(500).send(error);
         } else {
           res.status(202).send();
         }

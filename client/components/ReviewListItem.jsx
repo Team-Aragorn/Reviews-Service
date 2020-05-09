@@ -41,7 +41,7 @@ const Rule = styled.hr`
 
 
 const ReviewListItem = (props) => {
-  const { review, endpoint } = props;
+  const { review, endpoint, redraw } = props;
 
   return (
     <>
@@ -59,6 +59,7 @@ const ReviewListItem = (props) => {
           no={review.meta.unhelpful}
           id={review._id}
           endpoint={endpoint}
+          redraw={redraw}
         />
       </Container>
     </>
@@ -95,4 +96,5 @@ ReviewListItem.propTypes = {
     }),
   }).isRequired,
   endpoint: PropTypes.string.isRequired,
+  redraw: PropTypes.func.isRequired,
 };
