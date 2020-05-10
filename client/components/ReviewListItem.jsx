@@ -14,15 +14,27 @@ import ReviewText from './ReviewText';
 
 const Container = styled.div`
 display: grid;
-grid-template-columns: 60px 7fr 3fr;
-grid-template-rows: auto;
+
+grid-template-columns: 60px auto 160px;
 grid-template-areas:
-"avatar header    badge"
-"   .   review    ratings"
-"   .   owned     ratings"
-"   .   recommend ratings"
-"   .   helpful   helpful";
-gap: 0px 10px;
+  "avatar     header     badge"
+  "review     review     review"
+  "owned      owned      owned"
+  "recommend  recommend  recommend"
+  "ratings    ratings    ratings"
+  "helpful    helpful    helpful";
+
+@media (min-width: 768px) {
+  grid-template-columns: 60px 7fr 3fr;
+  grid-template-areas:
+    "avatar header    badge"
+    "   .   review    ratings"
+    "   .   owned     ratings"
+    "   .   recommend ratings"
+    "   .   helpful   helpful";
+  gap: 0px 10px;
+}
+
 padding: 10px 20px 10px 10px;
 `;
 

@@ -11,11 +11,18 @@ TimeAgo.addLocale(en);
 
 const Container = styled.div`
 display: grid;
-grid-template-columns: 114px auto;
-grid-template-rows: auto;
 grid-template-areas:
-"stars signature"
-"title title";
+  "stars"
+  "signature"
+  "title";
+
+@media (min-width: 768px) {
+  grid-template-columns: 125px auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "stars signature"
+    "title title";
+}
 `;
 
 const Signature = styled.div`
@@ -42,9 +49,13 @@ const Title = styled.h3`
   text-transform: capitalize;
 `;
 
+const StyledStars = styled(StarRating)`
+  grid-area: stars;
+`;
+
 const ReviewHeader = ({ className, review }) => (
   <Container className={className}>
-    <StarRating rating={review.overall} />
+    <StyledStars rating={review.overall} />
     <Signature>
       <Nickname>{review.nickname}</Nickname>
       <Date>

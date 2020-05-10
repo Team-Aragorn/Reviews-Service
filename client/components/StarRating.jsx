@@ -9,14 +9,16 @@ const RatingBG = styled.span`
   display: block;
   position: relative;
   margin: 0;
+  width: 100%;
 `;
 
 const RatingFill = styled.span`
   color: da291c;
   display: block;
+  margin: 0;
   position: relative;
   top: -20px;
-  width: ${(props) => ((props.rating / 5) * 100)}%;
+  width: ${(props) => (Math.floor((props.rating / 5) * 100))}%;
   overflow: hidden;
   white-space: nowrap;
 `;
@@ -41,11 +43,11 @@ const BarRating = ({ className, rating }) => (
 );
 
 const StyledBarRating = styled(BarRating)`
-  grid-area: stars;
   font-size: 20px;
   line-height: 24px;
   align-self: center;
   height: 24px;
+  width: 5.625em;
 `;
 
 export default StyledBarRating;

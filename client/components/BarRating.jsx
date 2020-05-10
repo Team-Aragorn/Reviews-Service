@@ -47,14 +47,18 @@ const Rating = styled.span`
   width: ${(props) => ((props.rating / 5) * 100)}%;
 `;
 
-const BarRating = ({ className, rating }) => (
+const BarRating = ({ className, rating, clean }) => (
   <div className={className}>
     <List>
-      <FirstItem />
-      <Item />
-      <Item />
-      <Item />
-      <LastItem />
+      {clean ? <></> : (
+        <>
+          <FirstItem />
+          <Item />
+          <Item />
+          <Item />
+          <LastItem />
+        </>
+      )}
     </List>
     <Rating rating={rating} />
   </div>
@@ -79,4 +83,9 @@ export default StyledBarRating;
 BarRating.propTypes = {
   className: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
+  clean: PropTypes.bool,
+};
+
+BarRating.defaultProps = {
+  clean: false,
 };
