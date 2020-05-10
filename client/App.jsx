@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ReviewList from './components/ReviewList';
 import ReviewSummary from './components/ReviewSummary';
+import FilterBar from './components/FilterBar';
 
 const dummyReview = {
   _id: '0',
@@ -88,6 +89,7 @@ class App extends React.Component {
     this.applyFilter = this.applyFilter.bind(this);
     this.checkFavorable = this.checkFavorable.bind(this);
     this.setFilterMatrix = this.setFilterMatrix.bind(this);
+    this.clearFilterMatrix = this.clearFilterMatrix.bind(this);
   }
 
   componentDidMount() {
@@ -105,6 +107,17 @@ class App extends React.Component {
     }
 
     reg[index][0] = value;
+
+    this.setState({ filterMatrix: reg }, this.applyFilter);
+  }
+
+  clearFilterMatrix() {
+    const { filterMatrix } = this.state;
+    const reg = [...filterMatrix];
+
+    for (let i = 0; i < reg.length; i += 1) {
+      reg[i][0] = false;
+    }
 
     this.setState({ filterMatrix: reg }, this.applyFilter);
   }
@@ -225,6 +238,7 @@ class App extends React.Component {
   render() {
     const {
       filteredReviews,
+      filterMatrix,
       mostFavorable,
       mostCritical,
       ratingCounts,
@@ -243,6 +257,11 @@ class App extends React.Component {
             favorable={mostFavorable}
             unfavorable={mostCritical}
             setter={this.setFilterMatrix}
+          />
+          <FilterBar
+            filterMatrix={filterMatrix}
+            setter={this.setFilterMatrix}
+            clear={this.clearFilterMatrix}
           />
           <ReviewList
             reviews={filteredReviews}
