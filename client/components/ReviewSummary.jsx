@@ -14,7 +14,7 @@ const Container = styled.div`
     "favorable"
     "unfavorable";
   grid-template-rows: auto auto 250px 250px;
-  gap: 30px 10px;
+  gap: 50px 10px;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -43,11 +43,12 @@ const ReviewSummary = (props) => {
     total,
     favorable,
     unfavorable,
+    setter,
   } = props;
 
   return (
     <Container>
-      <RatingSnapshot counts={counts} total={total} />
+      <RatingSnapshot counts={counts} total={total} setter={setter} />
       <RatingAverages averages={averages} />
       <Favorable review={favorable} title="Favorable" />
       <Unfavorable review={unfavorable} title="Critical" />
@@ -113,4 +114,5 @@ ReviewSummary.propTypes = {
       unhelpful: PropTypes.number,
     }),
   }).isRequired,
+  setter: PropTypes.func.isRequired,
 };

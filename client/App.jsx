@@ -71,11 +71,11 @@ class App extends React.Component {
       ratingAverages: [1, 1, 1, 1],
       totalReviews: 0,
       filterMatrix: [
-        [false, (review) => (review.overall === 1)],
-        [false, (review) => (review.overall === 2)],
-        [false, (review) => (review.overall === 3)],
-        [false, (review) => (review.overall === 4)],
-        [false, (review) => (review.overall === 5)],
+        [false, (review) => (review.overall === 1), '1 STAR'],
+        [false, (review) => (review.overall === 2), '2 STARS'],
+        [false, (review) => (review.overall === 3), '3 STARS'],
+        [false, (review) => (review.overall === 4), '4 STARS'],
+        [false, (review) => (review.overall === 5), '5 STARS'],
       ],
       filteredReviews: [dummyReview],
     };
@@ -87,12 +87,26 @@ class App extends React.Component {
     this.filterReviews = this.filterReviews.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
     this.checkFavorable = this.checkFavorable.bind(this);
+    this.setFilterMatrix = this.setFilterMatrix.bind(this);
   }
 
   componentDidMount() {
     const gameId = window.location.pathname.match(/\/games\/(\d+)\//);
 
     this.fetchReviews(gameId[1]);
+  }
+
+  setFilterMatrix(value, index) {
+    const { filterMatrix } = this.state;
+    const reg = [...filterMatrix];
+
+    if (reg[index][0] === value) {
+      return;
+    }
+
+    reg[index][0] = value;
+
+    this.setState({ filterMatrix: reg }, this.applyFilter);
   }
 
   fetchReviews(currentGame = this.state.currentGame) {
@@ -163,7 +177,6 @@ class App extends React.Component {
 
   filterReviews(filter = this.readFilterMatrix()) {
     const { reviews } = this.state;
-    console.log(filter);
 
     if (filter.length === 0) {
       return reviews;
@@ -173,7 +186,6 @@ class App extends React.Component {
 
     for (let i = 0; i < reviews.length; i += 1) {
       for (let j = 0; j < filter.length; j += 1) {
-        console.log(j);
         if (filter[j](reviews[i])) {
           filtered.push(reviews[i]);
           break;
@@ -230,6 +242,7 @@ class App extends React.Component {
             total={totalReviews}
             favorable={mostFavorable}
             unfavorable={mostCritical}
+            setter={this.setFilterMatrix}
           />
           <ReviewList
             reviews={filteredReviews}

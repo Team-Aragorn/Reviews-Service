@@ -47,8 +47,14 @@ const Rating = styled.span`
   width: ${(props) => ((props.rating / 5) * 100)}%;
 `;
 
-const BarRating = ({ className, rating, clean }) => (
-  <div className={className}>
+const BarRating = ({
+  className,
+  rating,
+  clean,
+  clickable,
+  ...rest
+}) => (
+  <div className={className} clickable={clickable ? 1 : 0} {...rest}>
     <List>
       {clean ? <></> : (
         <>
@@ -74,6 +80,7 @@ const StyledBarRating = styled(BarRating)`
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   box-shadow: inset 0 0 2px rgba(0,0,0,.25);
+  cursor: ${(props) => props.clickable ? 'pointer' : 'auto'};
   height: 8px;
   line-height: 24px;
 `;
@@ -84,8 +91,10 @@ BarRating.propTypes = {
   className: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   clean: PropTypes.bool,
+  clickable: PropTypes.bool,
 };
 
 BarRating.defaultProps = {
   clean: false,
+  clickable: false,
 };
