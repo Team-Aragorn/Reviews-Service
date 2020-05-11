@@ -22,7 +22,7 @@ const Container = styled.div`
   width: 60%;
 `;
 
-const RatingSnapshot = ({ counts, total }) => (
+const RatingSnapshot = ({ counts, total, setter }) => (
   <div>
     <Title>Rating Snapshot</Title>
     <Container>
@@ -31,7 +31,12 @@ const RatingSnapshot = ({ counts, total }) => (
           {'5 '}
           <FontAwesomeIcon icon={faStar} />
         </div>
-        <BarRating rating={(counts[4] / total) * 5} clean />
+        <BarRating
+          onClick={() => { setter(true, 4); }}
+          rating={(counts[4] / total) * 5}
+          clean
+          clickable
+        />
         <div>
           {counts[4]}
         </div>
@@ -41,7 +46,12 @@ const RatingSnapshot = ({ counts, total }) => (
           {'4 '}
           <FontAwesomeIcon icon={faStar} />
         </div>
-        <BarRating rating={(counts[3] / total) * 5} clean />
+        <BarRating
+          onClick={() => { setter(true, 3); }}
+          rating={(counts[3] / total) * 5}
+          clean
+          clickable
+        />
         <div>
           {counts[3]}
         </div>
@@ -51,7 +61,12 @@ const RatingSnapshot = ({ counts, total }) => (
           {'3 '}
           <FontAwesomeIcon icon={faStar} />
         </div>
-        <BarRating rating={(counts[2] / total) * 5} clean />
+        <BarRating
+          onClick={() => { setter(true, 2); }}
+          rating={(counts[2] / total) * 5}
+          clean
+          clickable
+        />
         <div>
           {counts[2]}
         </div>
@@ -61,7 +76,12 @@ const RatingSnapshot = ({ counts, total }) => (
           {'2 '}
           <FontAwesomeIcon icon={faStar} />
         </div>
-        <BarRating rating={(counts[1] / total) * 5} clean />
+        <BarRating
+          onClick={() => { setter(true, 1); }}
+          rating={(counts[1] / total) * 5}
+          clean
+          clickable
+        />
         <div>
           {counts[1]}
         </div>
@@ -71,12 +91,18 @@ const RatingSnapshot = ({ counts, total }) => (
           {'1 '}
           <FontAwesomeIcon icon={faStar} />
         </div>
-        <BarRating rating={(counts[0] / total) * 5} clean />
+        <BarRating
+          onClick={() => { setter(true, 0); }}
+          rating={(counts[0] / total) * 5}
+          clean
+          clickable
+        />
         <div>
           {counts[0]}
         </div>
       </>
     </Container>
+    Select a row above to filter reviews.
   </div>
 );
 
@@ -86,4 +112,5 @@ export default RatingSnapshot;
 RatingSnapshot.propTypes = {
   counts: PropTypes.arrayOf(PropTypes.number).isRequired,
   total: PropTypes.number.isRequired,
+  setter: PropTypes.func.isRequired,
 };
