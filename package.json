@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "dev-start": "nodemon server/index.js --ignore 'client/' --ignore 'public/'",
+    "start": "node server/index.js",
     "seed": "node server/db/seeder.js",
     "test": "jest --coverage --passWithNoTests --verbose"
   },
