@@ -11,6 +11,7 @@ app.listen(PORT, () => {
   console.log(`Now listening on port ${PORT}!`);
 });
 
+app.use(express.static('public'));
 app.use('/games/:gameId', express.static('public'));
 
 app.get('/reviews/:gameId', (req, res) => {

@@ -97,7 +97,7 @@ class App extends React.Component {
       filteredReviews: [dummyReview],
     };
 
-    this.REVIEWSBASE = 'http://localhost:3002/reviews/';
+    this.REVIEWSBASE = '/reviews/';
     this.fetchReviews = this.fetchReviews.bind(this);
     this.digestReviews = this.digestReviews.bind(this);
     this.readFilterMatrix = this.readFilterMatrix.bind(this);
