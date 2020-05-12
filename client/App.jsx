@@ -33,10 +33,26 @@ const dummyReview = {
 };
 
 const SectionHeading = styled.h1`
+  font-size: 2.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+`;
+
+const SectionSubHead = styled.h2`
   font-size: 34px;
   font-weight: 400;
   line-height: 35px;
   text-transform: uppercase;
+`;
+
+const Rule = styled.hr`
+  border: none;
+  border-top: 1px solid;
+  border-color: #d9d9d9;
 `;
 
 const Container = styled.div`
@@ -249,6 +265,8 @@ class App extends React.Component {
     return (
       <Container>
         <SectionHeading>reviews</SectionHeading>
+        <Rule />
+        <SectionSubHead>reviews</SectionSubHead>
         <Container>
           <ReviewSummary
             counts={ratingCounts}
