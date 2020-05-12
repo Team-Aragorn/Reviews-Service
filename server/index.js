@@ -24,7 +24,7 @@ app.get('/reviews/:gameId', (req, res) => {
   });
 });
 
-app.post('/reviews/', jsonParser, (req, res) => {
+app.post('/reviews/:gameId', jsonParser, (req, res) => {
   db.Review.findById(req.body.id, (err, review) => {
     if (err) {
       res.status(500).send(err);

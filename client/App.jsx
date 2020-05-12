@@ -253,6 +253,7 @@ class App extends React.Component {
 
   render() {
     const {
+      currentGame,
       filteredReviews,
       filterMatrix,
       mostFavorable,
@@ -283,7 +284,7 @@ class App extends React.Component {
           />
           <ReviewList
             reviews={filteredReviews}
-            endpoint={this.REVIEWSBASE}
+            endpoint={`${this.REVIEWSBASE}${currentGame}`}
             redraw={this.fetchReviews}
           />
         </Container>
