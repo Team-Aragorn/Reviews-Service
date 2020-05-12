@@ -109,7 +109,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const gameId = window.location.pathname.match(/\/games\/(\d+)\//);
+    const gameId = window.location.pathname.match(/\/games\/(\d+)/);
 
     this.fetchReviews(gameId[1]);
   }
