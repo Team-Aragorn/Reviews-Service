@@ -97,7 +97,7 @@ class App extends React.Component {
       filteredReviews: [dummyReview],
     };
 
-    this.REVIEWSBASE = 'http://localhost:3002/reviews/';
+    this.REVIEWSBASE = '/reviews/';
     this.fetchReviews = this.fetchReviews.bind(this);
     this.digestReviews = this.digestReviews.bind(this);
     this.readFilterMatrix = this.readFilterMatrix.bind(this);
@@ -109,7 +109,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const gameId = window.location.pathname.match(/\/games\/(\d+)\//);
+    const gameId = window.location.pathname.match(/\/games\/(\d+)/);
 
     this.fetchReviews(gameId[1]);
   }
@@ -253,6 +253,7 @@ class App extends React.Component {
 
   render() {
     const {
+      currentGame,
       filteredReviews,
       filterMatrix,
       mostFavorable,
@@ -283,7 +284,7 @@ class App extends React.Component {
           />
           <ReviewList
             reviews={filteredReviews}
-            endpoint={this.REVIEWSBASE}
+            endpoint={`${this.REVIEWSBASE}${currentGame}`}
             redraw={this.fetchReviews}
           />
         </Container>

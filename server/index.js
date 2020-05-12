@@ -11,6 +11,7 @@ app.listen(PORT, () => {
   console.log(`Now listening on port ${PORT}!`);
 });
 
+app.use(express.static('public'));
 app.use('/games/:gameId', express.static('public'));
 
 app.get('/reviews/:gameId', (req, res) => {
@@ -23,7 +24,7 @@ app.get('/reviews/:gameId', (req, res) => {
   });
 });
 
-app.post('/reviews/', jsonParser, (req, res) => {
+app.post('/reviews/:gameId', jsonParser, (req, res) => {
   db.Review.findById(req.body.id, (err, review) => {
     if (err) {
       res.status(500).send(err);
