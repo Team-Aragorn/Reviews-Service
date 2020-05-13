@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const RatingBG = styled.span`
-  color: e3e3e3;
+  color: #e3e3e3;
   display: block;
   position: relative;
   margin: 0;
@@ -13,7 +13,7 @@ const RatingBG = styled.span`
 `;
 
 const RatingFill = styled.span`
-  color: da291c;
+  color: #da291c;
   display: block;
   margin: 0;
   position: relative;
