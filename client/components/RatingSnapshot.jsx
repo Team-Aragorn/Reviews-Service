@@ -22,6 +22,10 @@ const Container = styled.div`
   width: 60%;
 `;
 
+const FAIcon = styled(FontAwesomeIcon)`
+  font-size: 13px;
+`;
+
 const RatingSnapshot = ({ counts, total, setter }) => (
   <div>
     <Title>Rating Snapshot</Title>
@@ -29,7 +33,7 @@ const RatingSnapshot = ({ counts, total, setter }) => (
       <>
         <div>
           {'5 '}
-          <FontAwesomeIcon icon={faStar} />
+          <FAIcon icon={faStar} />
         </div>
         <BarRating
           onClick={() => { setter(true, 4); }}
@@ -44,7 +48,7 @@ const RatingSnapshot = ({ counts, total, setter }) => (
       <>
         <div>
           {'4 '}
-          <FontAwesomeIcon icon={faStar} />
+          <FAIcon icon={faStar} />
         </div>
         <BarRating
           onClick={() => { setter(true, 3); }}
@@ -59,7 +63,7 @@ const RatingSnapshot = ({ counts, total, setter }) => (
       <>
         <div>
           {'3 '}
-          <FontAwesomeIcon icon={faStar} />
+          <FAIcon icon={faStar} />
         </div>
         <BarRating
           onClick={() => { setter(true, 2); }}
@@ -74,7 +78,7 @@ const RatingSnapshot = ({ counts, total, setter }) => (
       <>
         <div>
           {'2 '}
-          <FontAwesomeIcon icon={faStar} />
+          <FAIcon icon={faStar} />
         </div>
         <BarRating
           onClick={() => { setter(true, 1); }}
@@ -89,7 +93,7 @@ const RatingSnapshot = ({ counts, total, setter }) => (
       <>
         <div>
           {'1 '}
-          <FontAwesomeIcon icon={faStar} />
+          <FAIcon icon={faStar} />
         </div>
         <BarRating
           onClick={() => { setter(true, 0); }}
