@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const List = styled.ul`
-  color: 333333;
+  color: #333333;
   display: block;
   height: 8px;
   line-height: 24px;
@@ -37,7 +37,7 @@ const LastItem = styled(Item)`
 `;
 
 const Rating = styled.span`
-  background-color: da291c;
+  background-color: #da291c;
   background-image: -webkit-linear-gradient(top,rgba(255,255,255,.3) 0,rgba(255,255,255,0) 100%);
   border-radius: 2px;
   display: block;
