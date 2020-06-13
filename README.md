@@ -52,4 +52,7 @@ npm start
 
 ### API
 
-(TODO: DOCUMENT INTERNALS OF APP.JSX)
+|  Method      |  Endpoint                           |  Action                                                |
+| ------------ | ----------------------------------- | ------------------------------------------------------ |
+|  **POST**    |  /reviews/*gameID*                  |  Flags review as helpful or unhelpful.                 |
+|  **GET**     |  /reviews/*gameID*                  |  Response body contains reviews for *gameID*           |
